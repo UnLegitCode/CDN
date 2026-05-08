@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: cdn-node
+  servlet:
+    multipart:
+      max-file-size: 2000MB
+      max-request-size: 2000MB
+server:
+  port: 0
+minio:
+  url: http://localhost:9000
+  access-key: ${MINIO_ACCESS_KEY}
+  secret-key: ${MINIO_SECRET_KEY}
+  bucket: cdn-contents
+coordinator:
+  url: http://localhost:8761
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+    register-with-eureka: true
+    fetch-registry: false
+    healthcheck:
+      enabled: true
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${random.value}
+    lease-renewal-interval-in-seconds: 10
+    lease-expiration-duration-in-seconds: 30
+    ip-address: ${NODE_ADDRESS}

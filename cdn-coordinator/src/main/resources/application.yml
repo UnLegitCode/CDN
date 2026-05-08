@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: cdn-coordinator
+server:
+  port: 8761
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+  server:
+    enable-self-preservation: false
+    eviction-interval-timer-in-ms: 15000
+geoip2:
+  database-path: classpath:GeoLite2-City.mmdb
